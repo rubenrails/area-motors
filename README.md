@@ -15,7 +15,7 @@ Parses the sample email enquiries into a standard and structured format which at
 - Allow employees to see these customer enquiries in the new standardised format so they can quickly see the relevant information.
 - Allows an employee to mark the customer enquiry as “done” once they’ve dealt with the enquiry so it is not dealt with more than once.
 
-The owner has asked if you could provide some of the following optional functionality, which is not required, but would be useful for them:
+Area Motors has asked if you could provide some of the following optional functionality, which is not required, but would be useful for them:
 
 - Be able to search for a particular customer enquiry if they are looking for an enquiry from a specific customer.
 - Mark a customer enquiry as “invalid” if it has an invalid email address so that his employees don’t waste time on customer enquiries they can’t contact.
