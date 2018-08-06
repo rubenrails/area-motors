@@ -8,10 +8,10 @@ You will build an app for Area Motors that:
 
 - Allow employees to click “check for new enquiries” which checks if there are any new enquiries available (note: sample email enquiries provided for parsing in /public).
 Parses the sample email enquiries into a standard and structured format which at a minimum includes the following:
- - Name
- - Email Address
- - Message
- - Source (e.g. AMDirect or CarsForSale)
+  - Name
+  - Email Address
+  - Message
+  - Source (e.g. AMDirect or CarsForSale)
 - Allow employees to see these customer enquiries in the new standardised format so they can quickly see the relevant information.
 - Allows an employee to mark the customer enquiry as “done” once they’ve dealt with the enquiry so it is not dealt with more than once.
 
