@@ -7,7 +7,7 @@ Area Motors has a few employees and they find it difficult to keep track of all 
 You will build an app for Area Motors that:
 
 - Allow employees to click “check for new enquiries” which checks if there are any new enquiries available (note: sample email enquiries provided for parsing in /public).
-Parses the sample email enquiries into a standard and structured format which at a minimum includes the following:
+- Parses the sample email enquiries into a standard and structured format which at a minimum includes the following:
   - Name
   - Email Address
   - Message
