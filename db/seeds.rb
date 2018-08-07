@@ -5,3 +5,4 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+websites = Website.create([{ name: 'AMDirect', domain: 'amdirect.test'}, { name: 'CarsForSale', domain: 'carsforsale.test'}])
