@@ -18,6 +18,10 @@ class Enquiry < ApplicationRecord
       transitions from: :new, to: :invalid
     end
 
+    event :mark_as_done do
+      transitions from: :new, to: :done
+    end
+
     event :expire do
       transitions from: :new, to: :expired
     end
