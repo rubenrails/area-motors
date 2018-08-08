@@ -27,7 +27,7 @@ class Enquiry < ApplicationRecord
     end
 
     event :mark_as_junk do
-      transitions from: [:new, :invalid, :expired], to: :junk
+      transitions from: [:new, :invalid], to: :junk
     end
 
     event :reset do
