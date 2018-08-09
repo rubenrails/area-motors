@@ -1,11 +1,13 @@
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Status</th>
-    </tr>
-  </thead>
+<div class="row">
+  <div class="eight columns">
+    <h4>Customer enquiries</h4>
+  </div>
+  <div class="four columns">
+    <button class="button-primary u-pull-right">Check for new enquiries</button>
+  </div>
+</div>
+
+<table class="u-full-width">
   <tbody>
     <%= render @enquiries %>
   </tbody>

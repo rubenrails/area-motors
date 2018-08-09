@@ -1,5 +1,11 @@
 <tr>
-  <td><%= enquiry.name %></td>
-  <td><%= enquiry.email %></td>
-  <td><%= enquiry.status %></td>
+  <td>
+    <strong><%= enquiry.name %></strong><br/>
+    <%= enquiry.email %>
+  </td>
+  <td>
+    <%= enquiry.source.name %><br/>
+    <%= "(#{enquiry.reference})" if enquiry.reference.present? %>
+  </td>
+  <td><code><%= enquiry.status.upcase %></code></td>
 </tr>
