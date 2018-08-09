@@ -37,7 +37,15 @@ class EnquiryParser < ApplicationService
   end
 
   def parse_cars_for_sale doc
-    puts 'parse CarsForSale'
+    regex = /^(.*)\((.*)\)(?:.*He asked:)(.*)(?:You can view the vehicle)/
+    text = doc.xpath('//div/h1/following-sibling::text()').text.squish
+    _, name, email, message = text.match(regex).to_a.map(&:squish)
+
+    make = doc.at("td:contains('Make:')").next_element.text
+    model = doc.at("td:contains('Model:')").next_element.text
+    colour = doc.at("td:contains('Colour:')").next_element.text
+    year = doc.at("td:contains('Year:')").next_element.text
+    url = doc.css("div a").first.try(:[], :href)
   end
 
   def archive! enquiry_filepath
