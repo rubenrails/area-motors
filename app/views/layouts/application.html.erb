@@ -16,6 +16,9 @@
           <h2><strong>area</strong>motors</h2>
         </div>
       </div>
+      <% flash.each do |name, msg| -%>
+        <%= content_tag :div, msg, class: name %>
+      <% end -%>
       <%= yield %>
     </div>
   </body>

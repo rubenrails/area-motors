@@ -9,7 +9,7 @@ class EnquiryParser < ApplicationService
   end
 
   def call
-    list.each { |item| parse item }
+    list.map { |item| parse item }
   end
 
 
@@ -24,28 +24,39 @@ class EnquiryParser < ApplicationService
   end
 
   def parse_amdirect doc
-    name = doc.css(".customer-details #name").first&.content
-    email = doc.css(".customer-details #email").first&.content
-    message = doc.xpath('//div/text()').to_s.strip
+    Hash.new.tap do |hsh|
+      hsh[:source] = Website.amdirect
+      hsh[:name] = doc.css(".customer-details #name").first&.content
+      hsh[:email] = doc.css(".customer-details #email").first&.content
+      hsh[:message] = doc.xpath('//div/text()').to_s.strip
 
-    ref = doc.css(".vehicle-details #listing-ref").first&.content
-    make = doc.css(".vehicle-details #make").first&.content
-    model = doc.css(".vehicle-details #make").last&.content # This is probably a finger-error while creating the enquiries. Should be id='model' instead.
-    colour = doc.css(".vehicle-details #colour").last&.content
-    year = doc.css(".vehicle-details #year").last&.content
-    url = doc.css(".vehicle-details a").first.try(:[], :href)
+      hsh[:car_listing_attributes] = {}
+      hsh[:car_listing_attributes][:reference] = doc.css(".vehicle-details #listing-ref").first&.content
+      hsh[:car_listing_attributes][:make] = doc.css(".vehicle-details #make").first&.content
+      hsh[:car_listing_attributes][:model] = doc.css(".vehicle-details #make").last&.content # This is probably a finger-error while creating the enquiries. Should be id='model' instead.
+      hsh[:car_listing_attributes][:colour] = doc.css(".vehicle-details #colour").last&.content
+      hsh[:car_listing_attributes][:year] = doc.css(".vehicle-details #year").last&.content
+      hsh[:car_listing_attributes][:url] = doc.css(".vehicle-details a").first.try(:[], :href)
+    end
   end
 
   def parse_cars_for_sale doc
     regex = /^(.*)\((.*)\)(?:.*He asked:)(.*)(?:You can view the vehicle)/
     text = doc.xpath('//div/h1/following-sibling::text()').text.squish
     _, name, email, message = text.match(regex).to_a.map(&:squish)
+    Hash.new.tap do |hsh|
+      hsh[:source] = Website.carsforsale
+      hsh[:name] = name
+      hsh[:email] = email
+      hsh[:message] = message
 
-    make = doc.at("td:contains('Make:')").next_element.text
-    model = doc.at("td:contains('Model:')").next_element.text
-    colour = doc.at("td:contains('Colour:')").next_element.text
-    year = doc.at("td:contains('Year:')").next_element.text
-    url = doc.css("div a").first.try(:[], :href)
+      hsh[:car_listing_attributes] = {}
+      hsh[:car_listing_attributes][:make] = doc.at("td:contains('Make:')").next_element.text
+      hsh[:car_listing_attributes][:model] = doc.at("td:contains('Model:')").next_element.text
+      hsh[:car_listing_attributes][:colour] = doc.at("td:contains('Colour:')").next_element.text
+      hsh[:car_listing_attributes][:year] = doc.at("td:contains('Year:')").next_element.text
+      hsh[:car_listing_attributes][:url] = doc.css("div a").first.try(:[], :href)
+    end
   end
 
   def archive! enquiry_filepath
