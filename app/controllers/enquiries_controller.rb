@@ -18,4 +18,15 @@ class EnquiriesController < ApplicationController
       redirect_to root_url, flash: { notice: "We've found #{new_enquiries_params.size} new enquiries. You can see them listed below." }
     end
   end
+
+  def update
+    enquiry = Enquiry.find params[:id]
+    enquiry.update! enquiry_params
+    redirect_to enquiry
+  end
+
+  private
+  def enquiry_params
+    params.require(:enquiry).permit(:status)
+  end
 end
