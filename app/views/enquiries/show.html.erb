@@ -1,1 +1,36 @@
-<h5><%= @enquiry.name %></h5>
+<div class="enquiry-details">
+  <div class="row">
+    <div class="column back-link-container">
+      <%= link_to "← Back to list", root_path %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="column">
+      <h4>Enquiry Details</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="eight columns">
+      <h5>Customer Information</h5>
+      <dl>
+        <dt>Name:</dt>
+        <dd><%= @enquiry.name %></dd>
+        <dt>Email:</dt>
+        <dd><%= @enquiry.email %></dd>
+        <dt>Message:</dt>
+        <dd class="message"><%= @enquiry.message %></dd>
+      </dl>
+    </div>
+    <div class="four columns">
+      <h5>Vehicle Information</h5>
+      <pre>
+        <code>
+        Make: <%= @enquiry.make %>
+        Model: <%= @enquiry.model %>
+        Year: <%= @enquiry.year %>
+        Colour: <%= @enquiry.colour %>
+        </code>
+      </pre>
+    </div>
+  </div>
+</div>

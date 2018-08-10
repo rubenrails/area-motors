@@ -1,7 +1,7 @@
 table.enquiries {
   border-collapse: separate;
   border-spacing: 2px;
-  margin-top: 20px;
+  margin-top: 24px;
 
   tr {
     td:first-child {
@@ -33,6 +33,21 @@ table.enquiries {
     &.junk td {
       a { color: #a0abcc; }
       &:first-child { border-left-color: #b5bed8; }
+    }
+  }
+}
+
+div.enquiry-details {
+  div.back-link-container { margin-bottom: 24px; }
+  dl {
+    dt { font-weight: bold; }
+    dd {
+      margin: 0 0 10px 0;
+      &.message {
+        font-size: 1.2em;
+        font-style: italic;
+        padding: 24px 0;
+      }
     }
   }
 }
