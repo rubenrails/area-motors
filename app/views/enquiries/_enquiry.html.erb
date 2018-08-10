@@ -1,5 +1,4 @@
-<tr>
-  <td><code><%= enquiry.status.upcase %></code></td>
+<tr class="<%= enquiry.status %>">
   <td>
     <strong><%= link_to enquiry.name, enquiry_path(enquiry) %></strong><br/>
     <%= enquiry.email %>
@@ -14,6 +13,7 @@
       <%= "(#{enquiry.reference})" if enquiry.reference.present? %>
     </small>
   </td>
+  <td><code><%= enquiry.status.upcase %></code></td>
   <td>
     <%= link_to "Review", enquiry_path(enquiry) %>
   </td>

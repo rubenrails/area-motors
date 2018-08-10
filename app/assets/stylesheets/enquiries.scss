@@ -1,3 +1,38 @@
-// Place all the styles related to the Enquiries controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+table.enquiries {
+  border-collapse: separate;
+  border-spacing: 2px;
+  margin-top: 20px;
+
+  tr {
+    td:first-child {
+      padding-left: 16px;
+      border-left-width: 4px;
+      border-left-style: solid;
+      border-left-color: red;
+      strong { font-weight: normal; }
+    }
+    &.new td {
+      a { color: #559ae7; }
+      &:first-child {
+        strong { font-weight: bold; }
+        border-left-color: #559ae7;
+      }
+    }
+    &.done td {
+      a { color: #a8de90; }
+      &:first-child { border-left-color: #a8de90; }
+    }
+    &.invalid td {
+      a { color: #ee6155; }
+      &:first-child { border-left-color: #ee6155; }
+    }
+    &.expired td {
+      a { color: #ef9b3f; }
+      &:first-child { border-left-color: #ef9b3f; }
+    }
+    &.junk td {
+      a { color: #a0abcc; }
+      &:first-child { border-left-color: #b5bed8; }
+    }
+  }
+}
