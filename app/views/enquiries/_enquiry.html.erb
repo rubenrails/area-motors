@@ -1,11 +1,20 @@
 <tr>
+  <td><code><%= enquiry.status.upcase %></code></td>
   <td>
-    <strong><%= enquiry.name %></strong><br/>
+    <strong><%= link_to enquiry.name, enquiry_path(enquiry) %></strong><br/>
     <%= enquiry.email %>
   </td>
   <td>
-    <%= enquiry.source.name %><br/>
-    <%= "(#{enquiry.reference})" if enquiry.reference.present? %>
+    <small>
+      Via
+      <strong><%= enquiry.source.name %></strong>
+      <%= time_ago_in_words enquiry.created_at %>
+      ago
+      <br/>
+      <%= "(#{enquiry.reference})" if enquiry.reference.present? %>
+    </small>
   </td>
-  <td><code><%= enquiry.status.upcase %></code></td>
+  <td>
+    <%= link_to "Review", enquiry_path(enquiry) %>
+  </td>
 </tr>
