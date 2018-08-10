@@ -5,10 +5,11 @@ class Enquiry < ApplicationRecord
   has_one :car_listing
 
   accepts_nested_attributes_for :car_listing, reject_if: :all_blank
-
   delegate :make, :model, :colour, :year, :reference, :url, to: :car_listing
-
   enum status: [:new, :invalid, :done, :expired, :junk], _suffix: true
+
+  scope :new_status_first, -> { order(:status) }
+  scope :oldest_first, -> { order(:created_at) }
 
   aasm column: :status, enum: true do
     state :new, initial: true

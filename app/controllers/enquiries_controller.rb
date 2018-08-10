@@ -1,7 +1,7 @@
 class EnquiriesController < ApplicationController
 
   def index
-    @enquiries = Enquiry.all
+    @enquiries = Enquiry.new_status_first.oldest_first
   end
 
   def show
