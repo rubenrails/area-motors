@@ -61,6 +61,7 @@ group :test do
   gem 'chromedriver-helper'
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'master'
   gem "factory_bot_rails", "~> 4.0"
+  gem 'rails-controller-testing'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
