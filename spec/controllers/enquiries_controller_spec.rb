@@ -101,9 +101,44 @@ RSpec.describe EnquiriesController, type: :controller do
 
     it { is_expected.to permit(:status).for(:update, params: params).on(:enquiry) }
 
-    it 'redirects to enquiry#show' do
-      patch :update, params: params
-      expect(response).to redirect_to(enquiry_path(enquiry))
+    context 'when it updates the status successfully' do
+      let(:message) { "The status was successfully updated." }
+
+      before(:each) do
+        patch :update, params: params
+      end
+
+      it 'redirects to enquiry#show' do
+        expect(response).to redirect_to(enquiry_path(enquiry))
+      end
+
+      it 'notifies the user that the status was changed' do
+        expect(controller).to set_flash[:notice].to(message)
+      end
+    end
+
+    context 'when it fails to update the status' do
+      let(:message) { "We couldn't update the status. Please try again." }
+      let(:params) do
+        {
+          id: enquiry.id,
+          enquiry: {
+            status: 'unexsiting_status'
+          }
+        }
+      end
+
+      before(:each) do
+        patch :update, params: params
+      end
+
+      it 'notifies the user that there was an error' do
+        expect(controller).to set_flash.now[:alert].to(message)
+      end
+
+      it "renders the show template" do
+        expect(response).to render_template("show")
+      end
     end
   end
 
