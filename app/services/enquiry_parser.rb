@@ -16,6 +16,7 @@ class EnquiryParser < ApplicationService
 
   def parse enquiry_filepath
     doc = Nokogiri::HTML(open(enquiry_filepath))
+    archive! enquiry_filepath
     is_amdirect?(doc) ? parse_amdirect(doc) : parse_cars_for_sale(doc)
   end
 
