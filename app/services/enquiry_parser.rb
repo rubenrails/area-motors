@@ -4,14 +4,10 @@ class EnquiryParser < ApplicationService
   FILE_PATTERN = "*.html".freeze
   ARCHIVE_DIR = File.join(SOURCE_DIR, "archived").freeze
 
-  def initialize
-
-  end
 
   def call
     list.map { |item| parse item }
   end
-
 
   private
   def list
