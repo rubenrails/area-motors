@@ -20,9 +20,13 @@ class EnquiriesController < ApplicationController
   end
 
   def update
-    enquiry = Enquiry.find params[:id]
-    enquiry.update! enquiry_params
-    redirect_to enquiry
+    @enquiry = Enquiry.find params[:id]
+    begin @enquiry.update enquiry_params
+      redirect_to @enquiry, notice: "The status was successfully updated."
+    rescue ArgumentError # enum raises this error on invalid status
+      flash.now[:alert] = "We couldn't update the status. Please try again."
+      render :show
+    end
   end
 
   def search
