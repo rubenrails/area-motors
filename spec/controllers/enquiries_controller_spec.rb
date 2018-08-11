@@ -106,4 +106,46 @@ RSpec.describe EnquiriesController, type: :controller do
       expect(response).to redirect_to(enquiry_path(enquiry))
     end
   end
+
+  describe 'GET #search' do
+    context 'when the search term is empty/blank' do
+      let(:message) { "Please enter a search term." }
+      let(:query) { '' }
+
+      before(:each) do
+        get :search, params: { query: query }
+      end
+
+      it 'notifies the user that a search term is needed' do
+        expect(controller).to set_flash[:alert].to(message)
+      end
+
+      it 'redirects to root_path' do
+        expect(response).to redirect_to(root_path)
+      end
+    end
+
+    context 'when the search term is not blank' do
+      let!(:enquiry_with_name_arthur) { create :enquiry, name: 'Arthur Dent' }
+      let!(:enquiry_with_email_arthur) { create :enquiry, email: 'arthur@test.com' }
+      let(:message) { "Found 2 results for arthur" }
+      let(:query) { 'arthur' }
+
+      before(:each) do
+        get :search, params: { query: query }
+      end
+
+      it 'assigns @enquiries to results of search' do
+        expect(assigns(:enquiries)).to match_array [enquiry_with_name_arthur, enquiry_with_email_arthur]
+      end
+
+      it 'notifies the user about the number of results found for a given term' do
+        expect(controller).to set_flash.now[:notice].to(message)
+      end
+
+      it "renders the index template" do
+        expect(response).to render_template("index")
+      end
+    end
+  end
 end
