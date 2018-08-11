@@ -4,3 +4,21 @@ a {
     text-decoration: underline;
   }
 }
+
+div.flash {
+  padding: 16px;
+  border-style: solid;
+  border-width: 1px;
+  margin-bottom: 24px;
+  border-radius: 4px;
+  font-weight: bold;
+  &.alert {
+    color: #f7555a;
+    border-color: #f7555a;
+  }
+  &.notice {
+    color: #24b699;
+    border-color: #24b699;
+    background-color: #e6f9f5;
+  }
+}
