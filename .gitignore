@@ -32,3 +32,6 @@ pickle-email-*.html
 /config/master.key
 
 /.idea
+
+# Ignore all enquiries
+/public/enquiries/**/*
