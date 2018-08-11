@@ -35,4 +35,8 @@ class Enquiry < ApplicationRecord
       transitions from: [:invalid, :done, :expired, :junk], to: :new
     end
   end
+
+  def self.search query
+    where("lower(name) LIKE :query OR lower(email) LIKE :query", query: "%#{query.downcase}%").distinct
+  end
 end

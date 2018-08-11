@@ -1,9 +1,14 @@
 <div class="row">
-  <div class="eight columns">
+  <div class="five columns">
     <h4>Customer Enquiries</h4>
   </div>
   <div class="four columns">
-    <%= link_to 'Check for new enquiries', load_enquiries_path, class: "button button-primary u-pull-right" %>
+    <%= link_to 'Check for new enquiries', load_enquiries_path, class: "button button-primary u-pull-left" %>
+  </div>
+  <div class="three columns">
+    <%= form_tag search_enquiries_path, :method => "get" do %>
+      <%= search_field_tag :query, params[:query], placeholder: "Search", class: "u-full-width" %>
+    <% end %>
   </div>
 </div>
 

@@ -25,6 +25,17 @@ class EnquiriesController < ApplicationController
     redirect_to enquiry
   end
 
+  def search
+    query = params[:query]&.downcase
+    if query.blank?
+      redirect_to(root_url, flash: { alert: "Please enter a search term." }) and return
+    else
+      @enquiries = Enquiry.search(params[:query]).new_status_first.oldest_first
+      flash.now[:notice] = "Found #{@enquiries.count} results for #{query}"
+      render :index
+    end
+  end
+
   private
   def enquiry_params
     params.require(:enquiry).permit(:status)
