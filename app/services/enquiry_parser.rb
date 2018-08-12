@@ -57,6 +57,7 @@ class EnquiryParser < ApplicationService
   end
 
   def archive! enquiry_filepath
+    return if Rails.env.test?
     FileUtils.mv enquiry_filepath, ARCHIVE_DIR
   end
 
