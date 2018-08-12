@@ -1,6 +1,19 @@
+## Setup
+
+In order for the "Check for new enquiries" button to work, you first need to create some sample enquiries. Do that by running this generator as many times as you want:
+
+        $ rails generate enquiry amdirect
+
+or:
+
+        $ rails generate enquiry carsforsale
+
+NOTE: Everytime you parse new enquiries by pushing said button on the interface, those enquiries will get archived, which means if you click the button again there wont be any new enquiries to parse, thus you'll need to run the generator again.
+
+
 ## Area Motors Customer Enquiries
 
-Area Motors is a used car dealership. They advertise their used cars on two websites (AMDirect and CarsForSale). Prospective customers complete a contact form on these websites to enquire about the vehicle they’re interested in and those websites send an email to Area Motors email account. 
+Area Motors is a used car dealership. They advertise their used cars on two websites (AMDirect and CarsForSale). Prospective customers complete a contact form on these websites to enquire about the vehicle they’re interested in and those websites send an email to Area Motors email account.
 
 Area Motors has a few employees and they find it difficult to keep track of all these customer enquiry emails and the owner is concerned that customer enquiries are not being dealt with by his employees as quickly as he would like. The owner wants a tool to keep track of all these customer enquiries in one place so that he can keep an eye on things.
 
