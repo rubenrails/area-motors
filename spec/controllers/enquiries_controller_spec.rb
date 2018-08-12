@@ -78,7 +78,7 @@ RSpec.describe EnquiriesController, type: :controller do
 
       it 'notifies the user that there are no new enquiries to parse' do
         get :load
-        expect(controller).to set_flash[:alert].to(message)
+        expect(controller).to set_flash[:alert].to include message
       end
 
       it 'redirects to root_path' do

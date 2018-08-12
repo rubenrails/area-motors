@@ -13,7 +13,7 @@ class EnquiriesController < ApplicationController
     Enquiry.create! new_enquiries_params
 
     if new_enquiries_params.empty?
-      redirect_to root_url, flash: { alert: "We couldn't find any new enquiries." }
+      redirect_to root_url, flash: { alert: "We couldn't find any new enquiries. <br/> Try running <code>$ rails generate enquiry amdirect</code> or <code>$ rails generate enquiry carsforsale</code> on your terminal first." }
     else
       redirect_to root_url, flash: { notice: "We've found #{new_enquiries_params.size} new enquiries. You can see them listed below." }
     end
