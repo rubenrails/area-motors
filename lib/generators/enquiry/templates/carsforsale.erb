@@ -1,0 +1,29 @@
+<html>
+  <body>
+    <div>
+      <h1>CarsForSale</h1>
+      <%= FFaker::Name.name %> (<%= FFaker::Internet.email %>) has contacted you about a car for sale.<br>
+      <table>
+        <tr>
+          <td>Make:</td>
+          <td><%= FFaker::Vehicle.make %></td>
+        </tr>
+        <tr>
+          <td>Model:</td>
+          <td><%= FFaker::Vehicle.model %></td>
+        </tr>
+        <tr>
+          <td>Year:</td>
+          <td><%= FFaker::Vehicle.year %></td>
+        </tr>
+        <tr>
+          <td>Colour:</td>
+          <td><%= FFaker::Vehicle.base_color %></td>
+        </tr>
+      </table>
+      He asked: <br>
+      <%= FFaker::HipsterIpsum.sentences.join("</br>") %>
+      You can view the vehicle <a href="<%= FFaker::Internet.uri('http') %>">here</a>
+    </div>
+  </body>
+</html>

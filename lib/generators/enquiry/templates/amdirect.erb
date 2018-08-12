@@ -1,0 +1,22 @@
+<html>
+  <body>
+    <h1>AM-Direct Customer Enquiry</h1>
+    <h2>Customer details:</h2>
+    <div class="customer-details">
+      <label>Name:&nbsp;</label><span id="name"><%= FFaker::Name.name %></span><br>
+      <label>Email:&nbsp;</label><span id="email"><%= FFaker::Internet.email %></span><br><br>
+      <label>Enquiry:</label><br>
+      <%= FFaker::HipsterIpsum.sentences.join("</br>") %>
+    </div>
+    <h2>Vehicle details:</h2>
+    <div class="vehicle-details">
+      <label>Listing Reference:&nbsp;</label><span id="listing-ref"><%= FFaker::Product.model %></span><br>
+      <label>Make:&nbsp;</label><span id="make"><%= FFaker::Vehicle.make %></span><br>
+      <label>Model:&nbsp;</label><span id="make"><%= FFaker::Vehicle.model %></span><br>
+      <label>Colour:&nbsp;</label><span id="colour"><%= FFaker::Vehicle.base_color %></span><br>
+      <label>Model:&nbsp;</label><span id="year"><%= FFaker::Vehicle.year %></span><br>
+      <a href="<%= FFaker::Internet.uri('http') %>">Click to view the listing</a>
+    </div>
+  <span><br><br>Sent from AM-Direct</span>
+  </body>
+</html>

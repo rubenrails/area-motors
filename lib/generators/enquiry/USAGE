@@ -1,0 +1,8 @@
+Description:
+    Generates a sample enquiry ready to be parsed when you click the 'Check for new enquires' button from the homepage.
+
+Example:
+    rails generate enquiry amdirect|carsforsale
+
+    This will create a new enquiry html file at:
+        public/enquiries/
