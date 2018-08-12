@@ -35,3 +35,6 @@ pickle-email-*.html
 
 # Ignore all enquiries
 /public/enquiries/**/*
+
+# ignore auto-generated rspec report
+/spec/examples.txt
