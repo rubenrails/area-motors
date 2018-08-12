@@ -1,6 +1,6 @@
 ## Setup
 
-In order for the "Check for new enquiries" button to work, you first need to create some sample enquiries. Do that by running this generator as many times as you want:
+In order for the **Check for new enquiries** button to work, you first need to create some sample enquiries. Do that by running this generator as many times as you want:
 
         $ rails generate enquiry amdirect
 
@@ -8,7 +8,7 @@ or:
 
         $ rails generate enquiry carsforsale
 
-NOTE: Everytime you parse new enquiries by pushing said button on the interface, those enquiries will get archived, which means if you click the button again there wont be any new enquiries to parse, thus you'll need to run the generator again.
+NOTE: Every time you parse new enquiries by pushing said button on the interface, those enquiries will get archived, which means if you click the button again there won't be any new enquiries to parse, thus you'll need to run the generator again.
 
 
 ## Area Motors Customer Enquiries
