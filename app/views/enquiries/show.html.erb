@@ -40,7 +40,7 @@
       <hr/>
       <%= form_for @enquiry do |f| %>
         <%= f.label :status, 'Mark as:' %>
-        <%= f.select :status, @enquiry.aasm.states({:permitted => true}).map {|s| [s.name.to_s.titleize, s.name] } %>
+        <%= f.select :status, options_for_status_select(@enquiry), include_blank: '—Pick one—' %>
         <%= f.submit "Update Status", class: 'button-primary' %>
       <% end %>
     </div>
